@@ -37,6 +37,9 @@
       "!verification/**",
       "!electron/after-pack.cjs"
     ],
-    "afterPack": "electron/after-pack.cjs"
+    "afterPack": "electron/after-pack.cjs",
+    "mac": {
+      "icon": "electron/icon.png"
+    }
   }
 }
