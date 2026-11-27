@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:,">
+<title>PY-BoomBoom</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; overflow: hidden; }
+  #view { position: fixed; inset: 0; width: 100%; height: 100%; display: block; }
+  #guide { position: fixed; border: 1px dashed rgba(255,255,255,.25); pointer-events: none; display: none; z-index: 30; }
+  #hud { position: fixed; z-index: 35; left: 12px; top: 54px; font: 11px/1.4 ui-monospace, Menlo, monospace; color: #8a8f98; pointer-events: none; white-space: pre; }
+  #progress { z-index: 36; position: fixed; left: 50%; top: 12px; transform: translateX(-50%); font: 12px ui-monospace, Menlo, monospace; color: #e8e8e8; background: rgba(20,20,24,.85); padding: 6px 12px; border-radius: 4px; display: none; }
+</style>
+</head>
+<body>
+<canvas id="view"></canvas>
+<div id="guide"></div>
+<div class="pyb-badge">PY-BoomBoom<small>REAL-TIME PYROTECHNICS ENGINE</small></div>
+<div id="hud"></div>
+<div id="progress"></div>
+<noscript><p style="color:#ddd;font:14px sans-serif;padding:20px">This app needs JavaScript and WebGL2.</p></noscript>
+<script>
+// Startup safety net (classic script, runs even if the module fails to load): a blank page must never happen.
+(function () {
+  var HINTS = 'Use a current Chrome, Edge, Firefox or Safari with hardware acceleration enabled (Chrome: Settings > System > "Use graphics acceleration when available", then restart Chrome; chrome://gpu should list "WebGL2: Hardware accelerated"). Open the URL printed by `npm start` and keep that terminal running.';
+  var seen = {};
+  window.__fwShowError = function (title, detail, hint) {
+    var key = title + '|' + detail; if (seen[key]) return; seen[key] = 1;
+    var box = document.getElementById('fw-error');
+    if (!box) {
+      box = document.createElement('div'); box.id = 'fw-error';
+      box.style.cssText = 'position:fixed;left:50%;top:14px;transform:translateX(-50%);max-width:min(760px,92vw);z-index:99999;background:#2a1215;color:#ffd9d9;border:1px solid #a33;border-radius:6px;padding:12px 16px;font:13px/1.45 ui-monospace,Menlo,monospace;white-space:pre-wrap;word-break:break-word;max-height:70vh;overflow:auto';
+      document.body.appendChild(box);
+    }
+    var d = document.createElement('div'); d.style.marginBottom = '10px';
+    d.textContent = title + '\n' + (detail || '') + '\n\nWhat to do: ' + (hint || HINTS);
+    box.appendChild(d);
+  };
+  window.addEventListener('error', function (e) {
+    var t = e.target;
+    if (t && t !== window && t.tagName === 'SCRIPT') window.__fwShowError('A script failed to load: ' + (t.src || ''), 'Is `npm start` still running?');
+    else window.__fwShowError('Unexpected error', (e.message || '') + (e.filename ? '\n' + e.filename + ':' + e.lineno : ''));
+  }, true);
+  window.addEventListener('unhandledrejection', function (e) { window.__fwShowError('Unhandled error', String((e.reason && (e.reason.stack || e.reason.message)) || e.reason)); });
+  setTimeout(function () { if (!window.__fwStarted) window.__fwShowError('The app did not start', 'The main module did not finish loading within 8 seconds (see the browser console).'); }, 8000);
+})();
+</script>
+<script type="module" src="/src/main.js"></script>
+</body>
+</html>

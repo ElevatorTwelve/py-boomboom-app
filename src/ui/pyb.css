@@ -1,0 +1,108 @@
+/* PY-BoomBoom theme (draft). Palette "Crimson and Teal": crimson for actions and keys, teal for values and key diamonds, on near-black slate. */
+:root {
+  --pyb-bg: #0c1012; --pyb-panel: rgba(18, 24, 27, .92); --pyb-line: #233036; --pyb-text: #e3eaec; --pyb-dim: #7d9298;
+  --pyb-accent: #ee4f48; --pyb-accent2: #37c3b3; --pyb-font: "Avenir Next", "Segoe UI", system-ui, sans-serif; --pyb-mono: ui-monospace, Menlo, Consolas, monospace;
+}
+.lil-gui { --font-family: var(--pyb-font); --background-color: #12181b; --title-background-color: #171f23; --title-text-color: var(--pyb-text);
+  --widget-color: #1d2a2f; --hover-color: #28383e; --focus-color: #31484f; --number-color: var(--pyb-accent2); --string-color: var(--pyb-accent);
+  --text-color: var(--pyb-text); --folder-indent: 8px; --scrollbar-color: #2f4047; }
+.lil-gui.lil-root > .lil-title { background: linear-gradient(90deg, #1d272c, #171f23); border-bottom: 2px solid var(--pyb-accent); letter-spacing: .04em; font-weight: 700; }
+.lil-gui .lil-controller.lil-function .lil-name { color: var(--pyb-accent); }
+
+.pyb-bar { display: flex; align-items: center; gap: 10px; padding: 6px 10px;
+  background: var(--pyb-panel); border: 1px solid var(--pyb-line); border-radius: 8px; font: 12px var(--pyb-font); color: var(--pyb-text); z-index: 20; }
+.pyb-bar button, .pyb-deck-head button, .pyb-tl-head button, .pyb-gal-head button { background: #1d2a2f; color: var(--pyb-text); border: 1px solid var(--pyb-line); border-radius: 5px;
+  padding: 4px 9px; font: 12px var(--pyb-font); cursor: pointer; }
+.pyb-bar button:hover, .pyb-deck-head button:hover { background: #28383e; }
+.pyb-bar button.on { border-color: var(--pyb-accent); color: var(--pyb-accent); }
+.pyb-bar input[type=range] { flex: 1; accent-color: var(--pyb-accent); min-width: 80px; }
+.pyb-time { font: 12px var(--pyb-mono); color: var(--pyb-accent2); min-width: 110px; text-align: right; }
+.pyb-brand { font-weight: 800; letter-spacing: .06em; color: var(--pyb-accent); margin-right: 4px; white-space: nowrap; }
+
+.pyb-dock { position: fixed; left: 12px; right: 350px; bottom: 10px; display: flex; flex-direction: column; gap: 6px; z-index: 40; }
+.pyb-deck { background: var(--pyb-panel); border: 1px solid var(--pyb-line); border-radius: 8px;
+  font: 12px var(--pyb-font); color: var(--pyb-text); z-index: 20; }
+.pyb-deck-head { display: flex; justify-content: space-between; align-items: center; padding: 5px 10px; color: var(--pyb-dim); letter-spacing: .08em; text-transform: uppercase; font-size: 11px; }
+.pyb-deck-body { display: flex; flex-wrap: wrap; gap: 6px 14px; padding: 4px 12px 10px; align-items: flex-end; }
+.pyb-deck.closed .pyb-deck-body { display: none; }
+.pyb-dial { width: 74px; text-align: center; user-select: none; touch-action: none; cursor: ns-resize; }
+.pyb-dial svg { width: 62px; height: 62px; display: block; margin: 0 auto; }
+.pyb-dial .lbl { font-size: 11px; color: var(--pyb-dim); margin-top: 2px; }
+.pyb-dial .val { font: 11px var(--pyb-mono); color: var(--pyb-accent2); }
+.pyb-dial:focus-visible { outline: 1px solid var(--pyb-accent); border-radius: 6px; }
+.pyb-slider { width: 150px; }
+.pyb-slider .row { display: flex; justify-content: space-between; font-size: 11px; color: var(--pyb-dim); }
+.pyb-slider .row b { font: 11px var(--pyb-mono); color: var(--pyb-accent2); font-weight: 400; }
+.pyb-slider input { width: 100%; accent-color: var(--pyb-accent); }
+.pyb-sep { width: 1px; align-self: stretch; background: var(--pyb-line); }
+
+.pyb-tl { background: var(--pyb-panel); border: 1px solid var(--pyb-line); border-radius: 8px;
+  font: 12px var(--pyb-font); color: var(--pyb-text); z-index: 20; display: none; max-height: 34vh; overflow: auto; }
+.pyb-tl.open { display: block; }
+.pyb-tl-head { display: flex; justify-content: space-between; padding: 5px 10px; color: var(--pyb-dim); letter-spacing: .08em; text-transform: uppercase; font-size: 11px; }
+.pyb-tl-grid { position: relative; margin: 0 10px 10px 130px; }
+.pyb-tl-row { position: relative; height: 22px; border-top: 1px solid #1c282d; }
+.pyb-tl-row .name { position: absolute; left: -124px; width: 118px; top: 3px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--pyb-dim); }
+.pyb-tl-bar { position: absolute; top: 3px; height: 16px; border-radius: 4px; background: linear-gradient(90deg, var(--pyb-accent), #ff9a8a); cursor: ew-resize; min-width: 8px; opacity: .92; }
+.pyb-tl-bar.off { background: #3a4950; }
+.pyb-tl-head-t { position: relative; height: 16px; color: var(--pyb-dim); font-size: 10px; }
+.pyb-tl-head-t span { position: absolute; transform: translateX(-50%); }
+.pyb-tl-play { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--pyb-accent2); pointer-events: none; }
+
+.pyb-gal { position: fixed; inset: 0; background: rgba(6, 9, 10, .94); z-index: 2000; display: none; font: 13px var(--pyb-font); color: var(--pyb-text); }
+.pyb-gal.open { display: flex; flex-direction: column; }
+.pyb-gal-head { display: flex; gap: 10px; align-items: center; padding: 14px 20px; border-bottom: 1px solid var(--pyb-line); }
+.pyb-gal-head input { flex: 1; max-width: 360px; padding: 6px 10px; background: #12181b; border: 1px solid var(--pyb-line); border-radius: 5px; color: var(--pyb-text); font: 13px var(--pyb-font); }
+.pyb-gal-tags { display: flex; gap: 6px; flex-wrap: wrap; padding: 10px 20px 0; }
+.pyb-gal-tags button { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #182429; color: var(--pyb-dim); border: 1px solid var(--pyb-line); cursor: pointer; }
+.pyb-gal-tags button.on { color: var(--pyb-accent); border-color: var(--pyb-accent); }
+.pyb-gal-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); grid-auto-rows: max-content; align-content: start; gap: 14px; padding: 16px 20px; overflow: auto; flex: 1 1 auto; min-height: 0; }
+.pyb-card { display: flex; flex-direction: column; background: #12181b; border: 1px solid var(--pyb-line); border-radius: 8px; overflow: hidden; cursor: pointer; text-align: left; padding: 0; color: inherit; font: inherit; }
+.pyb-card:hover, .pyb-card:focus-visible { border-color: var(--pyb-accent); outline: none; }
+.pyb-card .thumb { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; flex: none; }
+.pyb-card .thumb canvas, .pyb-card .thumb img, .pyb-card .thumb video { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: cover; }
+.pyb-card .thumb video { opacity: 0; }
+.pyb-card .thumb video.on { opacity: 1; }
+.pyb-card .t { padding: 6px 9px 2px; font-weight: 600; overflow-wrap: anywhere; }
+.pyb-card .g { padding: 0 9px 9px; color: var(--pyb-dim); font-size: 11px; overflow-wrap: anywhere; }
+
+.pyb-help { position: fixed; right: 350px; top: 10px; background: var(--pyb-panel); border: 1px solid var(--pyb-line); border-radius: 8px; padding: 10px 14px; z-index: 2100;
+  font: 12px/1.6 var(--pyb-font); color: var(--pyb-text); display: none; }
+.pyb-help.open { display: block; }
+.pyb-help kbd { font: 11px var(--pyb-mono); background: #1d2a2f; border: 1px solid var(--pyb-line); border-radius: 4px; padding: 0 5px; color: var(--pyb-accent); }
+.pyb-badge { position: fixed; left: 12px; top: 10px; font: 800 15px var(--pyb-font); letter-spacing: .08em; color: var(--pyb-accent); text-shadow: 0 0 12px rgba(238, 79, 72, .5); pointer-events: none; z-index: 35; }
+.pyb-badge small { display: block; font: 600 10px var(--pyb-font); letter-spacing: .18em; color: var(--pyb-accent2); text-shadow: none; }
+
+/* Export frame edge, action safe (90%) and title safe (80%). Drawn above the bottom dock. */
+#guide.edge { border: 2px solid rgba(255, 255, 255, .7); box-shadow: 0 0 0 4000px rgba(0, 0, 0, .55); }   /* everything outside the frame is dimmed: it is not exported */
+#guide .pyb-safe, #guide .pyb-frame-label { display: none; }
+#guide.safe .pyb-safe { display: block; position: absolute; box-sizing: border-box; pointer-events: none; }
+#guide .pyb-safe.action { inset: 5%; border: 1px dashed #f2c14e; }
+#guide .pyb-safe.title { inset: 10%; border: 1px solid #58d68d; }
+#guide .pyb-safe span { position: absolute; left: 6px; top: 3px; font: 600 11px var(--pyb-font); letter-spacing: .04em; text-shadow: 0 0 4px #000, 0 0 2px #000; }
+#guide .pyb-safe.action span { color: #f2c14e; }
+#guide .pyb-safe.title span { color: #58d68d; }
+#guide.edge .pyb-frame-label { display: block; position: absolute; right: 8px; top: 3px; font: 600 11px var(--pyb-font); color: rgba(255, 255, 255, .75); text-shadow: 0 0 4px #000; }
+
+.pyb-tl-bar.cam { background: linear-gradient(90deg, var(--pyb-accent2), #8fe3d8); cursor: default; }
+.pyb-tl-key { position: absolute; top: 5px; width: 12px; height: 12px; margin-left: -6px; transform: rotate(45deg); background: var(--pyb-accent2); border: 1px solid #0c1012; cursor: ew-resize; }
+.pyb-tl-key.sel { background: #fff; box-shadow: 0 0 0 2px var(--pyb-accent2); }
+
+/* Drag a number's name to change it. */
+.lil-gui .lil-controller.lil-number .lil-name { cursor: ew-resize; user-select: none; }
+.lil-gui .lil-controller.lil-number .lil-name:hover { color: var(--pyb-accent); }
+body.pyb-scrubbing, body.pyb-scrubbing * { cursor: ew-resize !important; user-select: none !important; }
+
+/* Camera field colours: orange = key on this frame, green = animated, red = changed, not keyed. */
+.lil-gui .lil-controller.pyb-keyed { box-shadow: inset 3px 0 0 var(--pyb-accent); background: rgba(238, 79, 72, .12); }
+.lil-gui .lil-controller.pyb-animated { box-shadow: inset 3px 0 0 #3fcf8e; background: rgba(63, 207, 142, .08); }
+.lil-gui .lil-controller.pyb-edited { box-shadow: inset 3px 0 0 #ff4d4d; background: rgba(255, 77, 77, .12); }
+
+/* Dragging in the viewport must never select page text. */
+body { user-select: none; -webkit-user-select: none; }
+input, textarea { user-select: text; -webkit-user-select: text; }
+
+/* View menu in the viewport */
+.pyb-view { position: fixed; top: 10px; right: 350px; z-index: 45; display: flex; align-items: center; gap: 8px; padding: 4px 8px; background: var(--pyb-panel); border: 1px solid var(--pyb-line); border-radius: 8px; font: 12px var(--pyb-font); color: var(--pyb-dim); }
+.pyb-view select { background: #1d2a2f; color: var(--pyb-text); border: 1px solid var(--pyb-line); border-radius: 5px; padding: 4px 6px; font: 12px var(--pyb-font); cursor: pointer; min-width: 200px; }
+.pyb-view select:focus-visible { outline: 1px solid var(--pyb-accent); }

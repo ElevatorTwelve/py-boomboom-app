@@ -1,0 +1,42 @@
+{
+  "name": "fireworks-vfx",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "verify": "node scripts/verify.mjs",
+    "verify:ui": "node scripts/verify-ui.mjs",
+    "verify:blender": "node scripts/verify-blender.mjs",
+    "gifs": "node scripts/make-gifs.mjs",
+    "loops": "node scripts/render-loops.mjs",
+    "app": "electron .",
+    "dist": "electron-builder --mac --dir"
+  },
+  "dependencies": {
+    "lil-gui": "^0.21.0",
+    "three": "^0.187.0",
+    "vite": "^8.3.8"
+  },
+  "devDependencies": {
+    "electron": "^45.5.0",
+    "electron-builder": "^26.18.0",
+    "puppeteer-core": "^25.17.0"
+  },
+  "main": "electron/main.mjs",
+  "author": "ElevatorTwelve",
+  "build": {
+    "appId": "com.elevatortwelve.pyboomboom",
+    "productName": "PY-BoomBoom",
+    "asar": false,
+    "files": [
+      "**/*",
+      "!docs/**",
+      "!artifacts/**",
+      "!dist/**",
+      "!verification/**",
+      "!electron/after-pack.cjs"
+    ],
+    "afterPack": "electron/after-pack.cjs"
+  }
+}

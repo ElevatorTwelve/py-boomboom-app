@@ -1,0 +1,81 @@
+{
+ "width": 320,
+ "height": 180,
+ "presets": [
+  {
+   "name": "Chrysanthemum",
+   "slug": "chrysanthemum",
+   "kind": "combo"
+  },
+  {
+   "name": "Crackle + Dragon Eggs",
+   "slug": "crackle-dragon-eggs",
+   "kind": "combo"
+  },
+  {
+   "name": "Crossette + strobe finale",
+   "slug": "crossette-strobe-finale",
+   "kind": "combo"
+  },
+  {
+   "name": "Double break",
+   "slug": "double-break",
+   "kind": "combo"
+  },
+  {
+   "name": "Gold willow",
+   "slug": "gold-willow",
+   "kind": "combo"
+  },
+  {
+   "name": "Golden crown finale (18 s)",
+   "slug": "golden-crown-finale-18-s",
+   "kind": "finale"
+  },
+  {
+   "name": "Horsetail + Waterfall",
+   "slug": "horsetail-waterfall",
+   "kind": "combo"
+  },
+  {
+   "name": "Palm + kamuro",
+   "slug": "palm-kamuro",
+   "kind": "combo"
+  },
+  {
+   "name": "Park finale (22 s, wide)",
+   "slug": "park-finale-22-s-wide",
+   "kind": "finale"
+  },
+  {
+   "name": "Pistil + ring",
+   "slug": "pistil-ring",
+   "kind": "combo"
+  },
+  {
+   "name": "Rapid barrage (9 s)",
+   "slug": "rapid-barrage-9-s",
+   "kind": "finale"
+  },
+  {
+   "name": "Red peony",
+   "slug": "red-peony",
+   "kind": "combo"
+  },
+  {
+   "name": "Red peony + gold willow",
+   "slug": "red-peony-gold-willow",
+   "kind": "combo"
+  },
+  {
+   "name": "Saturn",
+   "slug": "saturn",
+   "kind": "combo"
+  },
+  {
+   "name": "Willow + Crackle",
+   "slug": "willow-crackle",
+   "kind": "combo"
+  }
+ ]
+}

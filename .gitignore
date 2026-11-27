@@ -1,0 +1,10 @@
+node_modules
+exports
+verification
+.DS_Store
+.env
+.env.*
+*.pem
+*.key
+.run/
+dist/
